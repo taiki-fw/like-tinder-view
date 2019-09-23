@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+import { UserActions } from "./components/ActionBtn";
+
 import * as serviceWorker from "./serviceWorker";
 
 import People from "./People";
@@ -10,6 +12,7 @@ const App = () => (
   <>
     <header style={styles.header}></header>
     <People />
+    <UserActions />
   </>
 );
 
@@ -18,6 +21,10 @@ const styles = {
     backgroundColor: "#f6f6f6",
     height: "50px",
     margin: "0 0 1em"
+  },
+  actionDiv: {
+    width: "85%",
+    margin: "25px auto 0"
   }
 };
 

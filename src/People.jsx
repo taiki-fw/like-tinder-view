@@ -39,7 +39,11 @@ export default class People extends React.Component {
         age={item.age}
       />
     ));
-    return <div style={style.People}>{item}</div>;
+    return (
+      <>
+        <div style={style.People}>{item}</div>
+      </>
+    );
   }
 }
 
@@ -47,6 +51,7 @@ const style = {
   People: {
     position: "relative",
     zIndex: "1",
+    height: "256px",
     width: "85%",
     margin: "0 auto"
   }
