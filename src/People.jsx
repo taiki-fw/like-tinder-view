@@ -38,7 +38,6 @@ export default class People extends React.Component {
   render() {
     return (
       <div>
-        <div style={styles.header}></div>
         <Person
           imgPath={this.state.people.imgPath}
           name={this.state.people.name}
@@ -48,11 +47,3 @@ export default class People extends React.Component {
     );
   }
 }
-
-const styles = {
-  header: {
-    backgroundColor: "#f6f6f6",
-    height: "50px",
-    margin: "0 0 1em"
-  }
-};
