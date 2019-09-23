@@ -1,42 +1,55 @@
 import React from "react";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTimesCircle,
-  faCaretSquareUp
-} from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faTimes, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
 const NopeBtn = () => (
   <button>
-    <FontAwesomeIcon icon={faTimesCircle} />
+    <FontAwesomeIcon icon={faTimes} size="2x" color="orangered" />
   </button>
 );
 
 const LikeBtn = () => (
   <button>
-    <FontAwesomeIcon icon={faHeart} />
+    <FontAwesomeIcon icon={faHeart} size="2x" color="aquamarine" />
   </button>
 );
 
 const JumpToUserInfo = () => (
   <button>
-    <FontAwesomeIcon icon={faCaretSquareUp} />
+    <FontAwesomeIcon icon={faUserAlt} size="2x" color="deepskyblue" />
   </button>
 );
 
-const UserActions = () => (
-  <div style={styles.actionDiv}>
-    <NopeBtn />
-    <JumpToUserInfo />
-    <LikeBtn />
-  </div>
-);
+const UserActions = () => {
+  const UserActionsStyle = styled.div`
+    width: 85%;
+    margin: 40px auto 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
 
-const styles = {
-  actionDiv: {
-    width: "85%",
-    margin: "25px auto 0"
-  }
+    > button {
+      display: inline-block;
+      width: 48.75px;
+      height: 48.75px;
+      background-color: white;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+    }
+
+    > button:nth-child(2) {
+      margin: 0 2em;
+    }
+  `;
+  return (
+    <UserActionsStyle>
+      <NopeBtn />
+      <JumpToUserInfo />
+      <LikeBtn />
+    </UserActionsStyle>
+  );
 };
 
 export { UserActions };
