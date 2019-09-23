@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/like-tinder-view/static/css/main.34de6062.chunk.css",
+    "main.js": "/like-tinder-view/static/js/main.a4e8293f.chunk.js",
+    "main.js.map": "/like-tinder-view/static/js/main.a4e8293f.chunk.js.map",
+    "runtime-main.js": "/like-tinder-view/static/js/runtime-main.90679998.js",
+    "runtime-main.js.map": "/like-tinder-view/static/js/runtime-main.90679998.js.map",
+    "static/js/2.409d79b9.chunk.js": "/like-tinder-view/static/js/2.409d79b9.chunk.js",
+    "static/js/2.409d79b9.chunk.js.map": "/like-tinder-view/static/js/2.409d79b9.chunk.js.map",
+    "index.html": "/like-tinder-view/index.html",
+    "precache-manifest.a99acb00117e2869cf6326a0cfb53525.js": "/like-tinder-view/precache-manifest.a99acb00117e2869cf6326a0cfb53525.js",
+    "service-worker.js": "/like-tinder-view/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/like-tinder-view/static/css/main.34de6062.chunk.css.map",
+    "static/media/model-1.jpg": "/like-tinder-view/static/media/model-1.f16bcd6b.jpg",
+    "static/media/model-2.jpg": "/like-tinder-view/static/media/model-2.34e6604d.jpg",
+    "static/media/model-3.jpg": "/like-tinder-view/static/media/model-3.2ff903bd.jpg"
+  }
+}
