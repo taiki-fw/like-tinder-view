@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Transition } from "react-transition-group";
 
 import "./People.css"; //transitionのためのCSS
 import Person from "./components/Person";
@@ -32,7 +31,7 @@ export default class People extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLike: false,
+      isLike: "",
       people: [
         {
           imgPath: model1,
@@ -54,18 +53,20 @@ export default class People extends React.Component {
   }
 
   handleAction(e) {
-    const isLikeAction = e.target.name === "Like";
-    const newItem = this.state.people.slice(1);
+    console.log(e.currentTarget.name);
+    const isLikeAction = e.currentTarget.name;
+    console.log("isLike", isLikeAction);
+    // const newItem = this.state.people.slice(1);
     this.setState({
-      isLike: isLikeAction,
-      people: newItem
+      isLike: isLikeAction
+      // people: newItem
     });
   }
 
   render() {
-    console.log(this.state.people);
     const item = this.state.people.map((item, index) => (
       <Person
+        cssClass={index === 0 ? `${this.state.isLike}` : ""}
         key={index}
         imgPath={item.imgPath}
         name={item.name}
