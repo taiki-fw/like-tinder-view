@@ -18,9 +18,15 @@ const PersonStyled = styled.div`
   height: 265px;
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s linear;
+
+  .leave--like {
+    transform: translateX(100%);
+  }
 
   :first-child {
     z-index: 5;
+    transform: scale(1);
   }
 
   :nth-child(2) {

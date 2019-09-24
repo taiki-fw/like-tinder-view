@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group"; // ES6
+import { Transition } from "react-transition-group";
 
 import "./People.css"; //transitionのためのCSS
 import Person from "./components/Person";
@@ -74,18 +74,7 @@ export default class People extends React.Component {
     ));
     return (
       <>
-        <ReactCSSTransitionGroup
-          transitionName={{
-            enter: "enter",
-            enterActive: "enter--active",
-            leave: "leave",
-            leaveActive: `leave--${this.state.isLike ? "like" : "nope"}`
-          }}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-        >
-          <div style={style.People}>{item}</div>
-        </ReactCSSTransitionGroup>
+        <div style={style.People}>{item}</div>
         <NopeBtn clickFunc={this.handleAction.bind(this)} />
         <LikeBtn clickFunc={this.handleAction.bind(this)} />
       </>

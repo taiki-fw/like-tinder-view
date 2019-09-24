@@ -6,6 +6,8 @@
 .leave {
 }
 .leave--like {
+  transform: translateX(100%);
 }
 .leave--nope {
+  transform: translateX(-100%);
 }
