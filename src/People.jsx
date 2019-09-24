@@ -1,7 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group"; // ES6
 
+import "./People.css"; //transitionのためのCSS
 import Person from "./components/Person";
+import { NopeBtn, LikeBtn } from "./components/ActionBtn";
 
 import model1 from "./img/model-1.jpg";
 import model2 from "./img/model-2.jpg";
@@ -50,7 +53,17 @@ export default class People extends React.Component {
     };
   }
 
+  handleAction(e) {
+    const isLikeAction = e.target.name === "Like";
+    const newItem = this.state.people.slice(1);
+    this.setState({
+      isLike: isLikeAction,
+      people: newItem
+    });
+  }
+
   render() {
+    console.log(this.state.people);
     const item = this.state.people.map((item, index) => (
       <Person
         key={index}
@@ -66,13 +79,15 @@ export default class People extends React.Component {
             enter: "enter",
             enterActive: "enter--active",
             leave: "leave",
-            leaveActive: `leave--${this.state.isLike}`
+            leaveActive: `leave--${this.state.isLike ? "like" : "nope"}`
           }}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
         >
           <div style={style.People}>{item}</div>
         </ReactCSSTransitionGroup>
+        <NopeBtn clickFunc={this.handleAction.bind(this)} />
+        <LikeBtn clickFunc={this.handleAction.bind(this)} />
       </>
     );
   }
@@ -87,3 +102,9 @@ const style = {
     margin: "0 auto"
   }
 };
+
+/*
+ * PeopleコンポーネントからNope,Likeボタンにclickされた時のアクションをpropsとして渡す。
+ * 各ボタンのactionType属性(なければ作る)で押したボタンを判別して、Peopleボタンに通知する。
+ * それにあったクラスが付与されてカードが捲れる様なアニメーションが走る
+ */

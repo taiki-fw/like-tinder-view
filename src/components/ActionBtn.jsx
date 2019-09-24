@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTimes, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
-const NopeBtn = () => (
-  <button>
+const NopeBtn = props => (
+  <button onClick={e => props.clickFunc(e)} name="nope">
     <FontAwesomeIcon icon={faTimes} size="2x" color="orangered" />
   </button>
 );
 
-const LikeBtn = () => (
-  <button>
+const LikeBtn = props => (
+  <button onClick={e => props.clickFunc(e)} name="like">
     <FontAwesomeIcon icon={faHeart} size="2x" color="aquamarine" />
   </button>
 );
@@ -21,7 +21,7 @@ const JumpToUserInfo = () => (
   </button>
 );
 
-const UserActions = () => {
+const UserActions = ({ handleClick }) => {
   const UserActionsStyle = styled.div`
     width: 85%;
     margin: 40px auto 0;
@@ -45,11 +45,11 @@ const UserActions = () => {
   `;
   return (
     <UserActionsStyle>
-      <NopeBtn />
+      <NopeBtn handleClick={handleClick} />
       <JumpToUserInfo />
-      <LikeBtn />
+      <LikeBtn handleClick={handleClick} />
     </UserActionsStyle>
   );
 };
 
-export { UserActions };
+export { NopeBtn, LikeBtn };

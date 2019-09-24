@@ -12,7 +12,7 @@ const App = () => (
   <div style={styles.app}>
     <header style={styles.header}></header>
     <People />
-    <UserActions />
+    {/* <UserActions /> */}
   </div>
 );
 
