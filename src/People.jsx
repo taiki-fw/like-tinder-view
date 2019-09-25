@@ -27,11 +27,13 @@ const peopleData = [
   }
 ];
 
+// nope,likeボタンを押した際にカードの移動アニメーション時間
+const animationTime = 2000;
+
 export default class People extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLike: "",
       people: [
         {
           imgPath: model1,
@@ -54,20 +56,26 @@ export default class People extends React.Component {
   }
 
   handleAction(e) {
+    // 表示しているpeopleにcssを付与する。
     const isLikeAction = e.currentTarget.name;
-    this.firstPeople.current.classList.add(isLikeAction);
     const newItem = this.state.people.slice(1);
-    this.setState({
-      isLike: isLikeAction
-      // people: newItem
-    });
+    console.log(this.firstPeople);
+    const obj = this.firstPeople.current;
+    obj.classList.add(isLikeAction);
+    setTimeout(() => {
+      obj.classList.remove(isLikeAction); // ここをPromiseに
+      this.setState({
+        isLike: isLikeAction,
+        people: newItem
+      });
+    }, 2000);
   }
 
   render() {
     const item = this.state.people.map((item, index) => (
       <Person
-        cssClass={index === 0 ? `${this.state.isLike}` : ""}
         ref={index === 0 ? this.firstPeople : ""}
+        animationTimePerMillisecond={animationTime}
         key={index}
         imgPath={item.imgPath}
         name={item.name}

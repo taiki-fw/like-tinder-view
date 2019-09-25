@@ -1,36 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-// class Person extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       imgPath: this.props.imgPath,
-//       name: this.props.name,
-//       age: this.props.age,
-//       cssClass: this.props.cssClass
-//     };
-//   }
-//   render() {
-//     return (
-//       <PersonStyled className={`${this.state.cssClass}`} ref={this.props.ref}>
-//         <img alt={`${this.state.name}さんの画像`} src={this.state.imgPath} />
-//         <span>
-//           <strong>{this.state.name}</strong>,{this.state.age}
-//         </span>
-//       </PersonStyled>
-//     );
-//   }
-// }
-
-const Person = React.forwardRef(({ imgPath, name, age, cssClass }, ref) => (
-  <PersonStyled className={`${cssClass}`} ref={ref}>
-    <img alt={`${name}さんの画像`} src={imgPath} />
-    <span>
-      <strong>{name}</strong>,{age}
-    </span>
-  </PersonStyled>
-));
+const Person = React.forwardRef(
+  ({ imgPath, name, age, animationTimePerMillisecond }, ref) => (
+    <PersonStyled
+      ref={ref}
+      animationTimePerMillisecond={animationTimePerMillisecond}
+    >
+      <img alt={`${name}さんの画像`} src={imgPath} />
+      <span>
+        <strong>{name}</strong>,{age}
+      </span>
+    </PersonStyled>
+  )
+);
 
 const PersonStyled = styled.div`
   position: absolute;
@@ -40,14 +23,20 @@ const PersonStyled = styled.div`
   height: 265px;
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  transition: all 5s linear;
+  opacity: 1;
 
   &.like {
     transform: translateX(100px);
+    transition: transform ${props =>
+      props.animationTimePerMillisecond}ms linear;
+    /* ${props => props.animationTimePerMillisecond}s */
   }
 
   &.nope {
-    transform: translateX(50px);
+    transform: translateX(-50px);
+    transition: transform ${props =>
+      props.animationTimePerMillisecond}ms linear;
+    /* opacity: 0; */
   }
 
   &:first-child {
