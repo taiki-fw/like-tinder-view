@@ -50,13 +50,13 @@ export default class People extends React.Component {
         }
       ]
     };
+    this.firstPeople = React.createRef();
   }
 
   handleAction(e) {
-    console.log(e.currentTarget.name);
     const isLikeAction = e.currentTarget.name;
-    console.log("isLike", isLikeAction);
-    // const newItem = this.state.people.slice(1);
+    this.firstPeople.current.classList.add(isLikeAction);
+    const newItem = this.state.people.slice(1);
     this.setState({
       isLike: isLikeAction
       // people: newItem
@@ -67,6 +67,7 @@ export default class People extends React.Component {
     const item = this.state.people.map((item, index) => (
       <Person
         cssClass={index === 0 ? `${this.state.isLike}` : ""}
+        ref={index === 0 ? this.firstPeople : ""}
         key={index}
         imgPath={item.imgPath}
         name={item.name}

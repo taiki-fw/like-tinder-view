@@ -1,14 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
-const Person = ({ imgPath, name, age, cssClass }) => (
-  <PersonStyled className={`${cssClass}`}>
+// class Person extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       imgPath: this.props.imgPath,
+//       name: this.props.name,
+//       age: this.props.age,
+//       cssClass: this.props.cssClass
+//     };
+//   }
+//   render() {
+//     return (
+//       <PersonStyled className={`${this.state.cssClass}`} ref={this.props.ref}>
+//         <img alt={`${this.state.name}さんの画像`} src={this.state.imgPath} />
+//         <span>
+//           <strong>{this.state.name}</strong>,{this.state.age}
+//         </span>
+//       </PersonStyled>
+//     );
+//   }
+// }
+
+const Person = React.forwardRef(({ imgPath, name, age, cssClass }, ref) => (
+  <PersonStyled className={`${cssClass}`} ref={ref}>
     <img alt={`${name}さんの画像`} src={imgPath} />
     <span>
       <strong>{name}</strong>,{age}
     </span>
   </PersonStyled>
-);
+));
 
 const PersonStyled = styled.div`
   position: absolute;
