@@ -16,9 +16,38 @@ const Person = React.forwardRef(
 );
 
 const PersonStyled = styled.div`
+  @keyframes likeBtn {
+    0% {
+      transform: scale(1) rotateZ(0deg);
+      left: 0;
+    }
+    30% {
+      transform: scale(1.05) rotateZ(0deg);
+      left: 0;
+    }
+    100% {
+      transform: rotateZ(45deg);
+      left: 400px;
+    }
+  }
+
+  @keyframes nopeBtn {
+    0% {
+      transform: rotateZ(360deg);
+      right: 0;
+    }
+    30% {
+      transform: scale(1.05) rotateZ(360deg);
+      right: 0;
+    }
+    100% {
+      transform: rotateZ(315deg);
+      right: 400px;
+    }
+  }
+
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 265px;
   margin: 0 auto;
@@ -27,17 +56,11 @@ const PersonStyled = styled.div`
   transform: rotateZ(0deg);
 
   &.like {
-    transform: translateX(100%) rotateZ(45deg);
-    transition: transform ${props =>
-      props.animationTimePerMillisecond}ms linear;
-    /* ${props => props.animationTimePerMillisecond}s */
+    animation: likeBtn ${props => props.animationTimePerMillisecond}ms linear;
   }
 
   &.nope {
-    transform: translateX(-50px);
-    transition: transform ${props =>
-      props.animationTimePerMillisecond}ms linear;
-    /* opacity: 0; */
+    animation: nopeBtn ${props => props.animationTimePerMillisecond}ms linear;
   }
 
   &:first-child {

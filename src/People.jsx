@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import "./People.css"; //transitionのためのCSS
 import Person from "./components/Person";
 import { NopeBtn, LikeBtn, JumpToUserInfo } from "./components/ActionBtn";
 
@@ -28,7 +27,7 @@ const peopleData = [
 ];
 
 // nope,likeボタンを押した際にカードの移動アニメーション時間
-const animationTime = 2000;
+const animationTime = 600;
 
 const PeopleStyle = styled.div`
   position: relative;
@@ -83,6 +82,7 @@ export default class People extends React.Component {
       ]
     };
     this.firstPeople = React.createRef();
+    this.handleAction = this.handleAction.bind(this);
   }
 
   handleAction(e) {
@@ -114,9 +114,9 @@ export default class People extends React.Component {
       <>
         <PeopleStyle>{item}</PeopleStyle>
         <UserActionsStyle>
-          <NopeBtn clickFunc={this.handleAction.bind(this)} />
+          <NopeBtn clickFunc={this.handleAction} />
           <JumpToUserInfo />
-          <LikeBtn clickFunc={this.handleAction.bind(this)} />
+          <LikeBtn clickFunc={this.handleAction} />
         </UserActionsStyle>
       </>
     );
