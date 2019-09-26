@@ -27,13 +27,13 @@ const PersonStyled = styled.div`
     }
     100% {
       transform: rotateZ(45deg);
-      left: 400px;
+      left: 115%; /* 要素width 100% + 空白の部分width 15% = 115% */
     }
   }
 
   @keyframes nopeBtn {
     0% {
-      transform: rotateZ(360deg);
+      transform: scale(1) rotateZ(360deg);
       right: 0;
     }
     30% {
@@ -42,7 +42,7 @@ const PersonStyled = styled.div`
     }
     100% {
       transform: rotateZ(315deg);
-      right: 400px;
+      right: 115%; /* 要素width 100% + 空白の部分width 15% = 115% */
     }
   }
 
@@ -53,7 +53,6 @@ const PersonStyled = styled.div`
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   opacity: 1;
-  transform: rotateZ(0deg);
 
   &.like {
     animation: likeBtn ${props => props.animationTimePerMillisecond}ms linear;
