@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import "./People.css"; //transitionのためのCSS
 import Person from "./components/Person";
-import { NopeBtn, LikeBtn } from "./components/ActionBtn";
+import { NopeBtn, LikeBtn, JumpToUserInfo } from "./components/ActionBtn";
 
 import model1 from "./img/model-1.jpg";
 import model2 from "./img/model-2.jpg";
@@ -29,6 +29,36 @@ const peopleData = [
 
 // nope,likeボタンを押した際にカードの移動アニメーション時間
 const animationTime = 2000;
+
+const PeopleStyle = styled.div`
+  position: relative;
+  z-index: 1;
+  height: 256px;
+  width: 85%;
+  margin: 0 auto;
+`;
+
+const UserActionsStyle = styled.div`
+  width: 85%;
+  margin: 40px auto 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  > button {
+    display: inline-block;
+    width: 48.75px;
+    height: 48.75px;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+  }
+
+  > button:nth-child(2) {
+    margin: 0 2em;
+  }
+`;
 
 export default class People extends React.Component {
   constructor(props) {
@@ -56,19 +86,17 @@ export default class People extends React.Component {
   }
 
   handleAction(e) {
-    // 表示しているpeopleにcssを付与する。
     const isLikeAction = e.currentTarget.name;
-    const newItem = this.state.people.slice(1);
-    console.log(this.firstPeople);
-    const obj = this.firstPeople.current;
+    const newItem = this.state.people.slice(1); // 表示されていたカードを削除した新しいpeopleデータ
+    const obj = this.firstPeople.current; // 表示されているpeopleのnode
     obj.classList.add(isLikeAction);
     setTimeout(() => {
-      obj.classList.remove(isLikeAction); // ここをPromiseに
+      obj.classList.remove(isLikeAction);
       this.setState({
         isLike: isLikeAction,
         people: newItem
       });
-    }, 2000);
+    }, animationTime);
   }
 
   render() {
@@ -84,26 +112,13 @@ export default class People extends React.Component {
     ));
     return (
       <>
-        <div style={style.People}>{item}</div>
-        <NopeBtn clickFunc={this.handleAction.bind(this)} />
-        <LikeBtn clickFunc={this.handleAction.bind(this)} />
+        <PeopleStyle>{item}</PeopleStyle>
+        <UserActionsStyle>
+          <NopeBtn clickFunc={this.handleAction.bind(this)} />
+          <JumpToUserInfo />
+          <LikeBtn clickFunc={this.handleAction.bind(this)} />
+        </UserActionsStyle>
       </>
     );
   }
 }
-
-const style = {
-  People: {
-    position: "relative",
-    zIndex: "1",
-    height: "256px",
-    width: "85%",
-    margin: "0 auto"
-  }
-};
-
-/*
- * PeopleコンポーネントからNope,Likeボタンにclickされた時のアクションをpropsとして渡す。
- * 各ボタンのactionType属性(なければ作る)で押したボタンを判別して、Peopleボタンに通知する。
- * それにあったクラスが付与されてカードが捲れる様なアニメーションが走る
- */

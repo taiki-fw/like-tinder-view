@@ -24,9 +24,10 @@ const PersonStyled = styled.div`
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   opacity: 1;
+  transform: rotateZ(0deg);
 
   &.like {
-    transform: translateX(100px);
+    transform: translateX(100%) rotateZ(45deg);
     transition: transform ${props =>
       props.animationTimePerMillisecond}ms linear;
     /* ${props => props.animationTimePerMillisecond}s */
