@@ -72,8 +72,15 @@ export default class People extends React.Component {
   }
 
   handleAction(e) {
-    const isLikeAction = e.currentTarget.name;
-    const newItem = this.state.people.slice(1); // 表示されていたカードを削除した新しいpeopleデータ
+    const isLikeAction = e.currentTarget.name; // 付与するclassの名前の判別
+
+    // randomなpeopleの選出
+    const randomNum = Math.floor(Math.random() * peopleData.length);
+    const randomPeople = peopleData[randomNum];
+
+    // 表示されていたカードを削除し、ランダムにデータを追加した新しいpeopleデータ
+    const newItem = this.state.people.slice(1).concat(randomPeople);
+
     const obj = this.firstPeople.current; // 表示されているpeopleのnode
     obj.classList.add(isLikeAction);
     setTimeout(() => {
