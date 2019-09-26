@@ -86,7 +86,6 @@ export default class People extends React.Component {
     setTimeout(() => {
       obj.classList.remove(isLikeAction);
       this.setState({
-        isLike: isLikeAction,
         people: newItem
       });
     }, animationTime);
