@@ -43,20 +43,6 @@ const UserActionsStyle = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-
-  > button {
-    display: inline-block;
-    width: 48.75px;
-    height: 48.75px;
-    background-color: white;
-    outline: none;
-    border: none;
-    border-radius: 50%;
-  }
-
-  > button:nth-child(2) {
-    margin: 0 2em;
-  }
 `;
 
 export default class People extends React.Component {
