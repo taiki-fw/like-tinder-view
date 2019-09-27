@@ -30,6 +30,20 @@ const PersonStyled = styled.div`
       left: 115%; /* 要素width 100% + 空白の部分width 15% = 115% */
     }
   }
+  @-webkit-keyframes likeBtn {
+    0% {
+      -webkit-transform: scale(1) rotateZ(0deg);
+      left: 0;
+    }
+    30% {
+      -webkit-transform: scale(1.05) rotateZ(0deg);
+      left: 0;
+    }
+    100% {
+      -webkit-transform: rotateZ(45deg);
+      left: 115%; /* 要素width 100% + 空白の部分width 15% = 115% */
+    }
+  }
 
   @keyframes nopeBtn {
     0% {
@@ -46,6 +60,21 @@ const PersonStyled = styled.div`
     }
   }
 
+  @-webkit-keyframes nopeBtn {
+    0% {
+      -webkit-transform: scale(1) rotateZ(360deg);
+      right: 0;
+    }
+    30% {
+      -webkit-transform: scale(1.05) rotateZ(360deg);
+      right: 0;
+    }
+    100% {
+      -webkit-transform: rotateZ(315deg);
+      right: 115%; /* 要素width 100% + 空白の部分width 15% = 115% */
+    }
+  }
+
   position: absolute;
   top: 0;
   width: 100%;
@@ -53,13 +82,18 @@ const PersonStyled = styled.div`
   margin: 0 auto;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   opacity: 1;
+  -webkit-backface-visibility: hidden;
 
   &.like {
     animation: likeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    -webkit-animation: likeBtn ${props => props.animationTimePerMillisecond}ms
+      linear;
   }
 
   &.nope {
     animation: nopeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    -webkit-animation: nopeBtn ${props => props.animationTimePerMillisecond}ms
+      linear;
   }
 
   &:first-child {
