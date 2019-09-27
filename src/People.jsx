@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-import Person from "./components/Person";
+import { Person } from "./components/Person";
 import { NopeBtn, LikeBtn, JumpToUserInfo } from "./components/ActionBtn";
 
 import model1 from "./img/model-1.jpg";
 import model2 from "./img/model-2.jpg";
 import model3 from "./img/model-3.jpg";
 
-const peopleData = [
+export const peopleData = [
   {
+    id: 1,
     imgPath: model1,
     name: "Lara",
     age: "22"
   },
   {
+    id: 2,
     imgPath: model2,
     name: "Sandra",
     age: "18"
   },
   {
+    id: 3,
     imgPath: model3,
     name: "Emma",
     age: "24"
@@ -51,16 +54,19 @@ export default class People extends React.Component {
     this.state = {
       people: [
         {
+          id: 1,
           imgPath: model1,
           name: "Lara",
           age: "22"
         },
         {
+          id: 2,
           imgPath: model2,
           name: "Sandra",
           age: "18"
         },
         {
+          id: 3,
           imgPath: model3,
           name: "Emma",
           age: "24"
@@ -102,12 +108,13 @@ export default class People extends React.Component {
         age={item.age}
       />
     ));
+    const displayedPersonId = this.state.people[0].id;
     return (
       <>
         <PeopleStyle>{item}</PeopleStyle>
         <UserActionsStyle>
           <NopeBtn clickFunc={this.handleAction} />
-          <JumpToUserInfo />
+          <JumpToUserInfo id={displayedPersonId} />
           <LikeBtn clickFunc={this.handleAction} />
         </UserActionsStyle>
       </>

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 
 import { UserActions } from "./components/ActionBtn";
@@ -7,11 +8,17 @@ import { UserActions } from "./components/ActionBtn";
 import * as serviceWorker from "./serviceWorker";
 
 import People from "./People";
+import { PersonDetail } from "./components/Person";
 
 const App = () => (
   <div style={styles.app}>
     <header style={styles.header}></header>
-    <People />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={People} />
+        <Route path="/user/:id" component={PersonDetail} />
+      </Switch>
+    </Router>
     {/* <UserActions /> */}
   </div>
 );

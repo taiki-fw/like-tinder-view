@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { peopleData } from "../People";
 
 const Person = React.forwardRef(
   ({ imgPath, name, age, animationTimePerMillisecond }, ref) => (
@@ -14,6 +16,23 @@ const Person = React.forwardRef(
     </PersonStyled>
   )
 );
+
+const PersonDetail = props => {
+  const { params } = props.match;
+  const id = parseInt(params.id, 10);
+  const person = peopleData.filter(p => p.id === id)[0];
+  return (
+    <div>
+      <img alt={`${person.name}さんの画像`} src={person.imgPath} />
+      <span>
+        <strong>{person.name}</strong>,{person.age}
+        {/* <p>{person.job}</p>
+        <p>{person.distance}</p> */}
+      </span>
+      <Link to="/">Home</Link>
+    </div>
+  );
+};
 
 const PersonStyled = styled.div`
   @keyframes likeBtn {
@@ -55,11 +74,13 @@ const PersonStyled = styled.div`
   opacity: 1;
 
   &.like {
-    animation: likeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    animation: likeBtn ${props => props.animationTimePerMillisecond || 0}ms
+      linear;
   }
 
   &.nope {
-    animation: nopeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    animation: nopeBtn ${props => props.animationTimePerMillisecond || 0}ms
+      linear;
   }
 
   &:first-child {
@@ -101,4 +122,4 @@ const PersonStyled = styled.div`
   }
 `;
 
-export default Person;
+export { Person, PersonDetail };
