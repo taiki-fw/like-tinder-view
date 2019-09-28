@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { peopleData } from "../People";
 
 const Person = React.forwardRef(
   ({ imgPath, name, age, animationTimePerMillisecond }, ref) => (
@@ -9,30 +7,24 @@ const Person = React.forwardRef(
       ref={ref}
       animationTimePerMillisecond={animationTimePerMillisecond}
     >
-      <img alt={`${name}さんの画像`} src={imgPath} />
-      <span>
+      <UserImg alt={`${name}さんの画像`} src={imgPath} />
+      <UserInfo>
         <strong>{name}</strong>,{age}
-      </span>
+      </UserInfo>
     </PersonStyled>
   )
 );
 
-const PersonDetail = props => {
-  const { params } = props.match;
-  const id = parseInt(params.id, 10);
-  const person = peopleData.filter(p => p.id === id)[0];
-  return (
-    <div>
-      <img alt={`${person.name}さんの画像`} src={person.imgPath} />
-      <span>
-        <strong>{person.name}</strong>,{person.age}
-        {/* <p>{person.job}</p>
-        <p>{person.distance}</p> */}
-      </span>
-      <Link to="/">Home</Link>
-    </div>
-  );
-};
+const UserInfo = styled.span`
+  text-align: left;
+  display: block;
+  width: 100%;
+  padding: 10px;
+`;
+
+const UserImg = styled.img`
+  width: 100%;
+`;
 
 const PersonStyled = styled.div`
   @keyframes likeBtn {
@@ -103,12 +95,6 @@ const PersonStyled = styled.div`
     z-index: 2;
   }
 
-  & > img,
-  & > span {
-    display: block;
-    width: 100%;
-  }
-
   & > img {
     height: 100%;
   }
@@ -117,9 +103,8 @@ const PersonStyled = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 10px;
     background-color: white;
   }
 `;
 
-export { Person, PersonDetail };
+export { Person, UserInfo, UserImg };

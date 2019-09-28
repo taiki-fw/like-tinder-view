@@ -8,7 +8,7 @@ import { UserActions } from "./components/ActionBtn";
 import * as serviceWorker from "./serviceWorker";
 
 import People from "./People";
-import { PersonDetail } from "./components/Person";
+import PersonDetail from "./components/PersonDetail";
 
 const App = () => (
   <div style={styles.app}>
