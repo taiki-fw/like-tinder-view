@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTimes, faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const ActionBtn = styled.button`
   display: inline-block;
@@ -29,9 +30,11 @@ const LikeBtn = props => (
   </ActionBtn>
 );
 
-const JumpToUserInfo = () => (
+const JumpToUserInfo = ({ id }) => (
   <ShowUserInfoBtn>
-    <FontAwesomeIcon icon={faUserAlt} size="2x" color="deepskyblue" />
+    <Link to={`/user/${id}`}>
+      <FontAwesomeIcon icon={faUserAlt} size="2x" color="deepskyblue" />
+    </Link>
   </ShowUserInfoBtn>
 );
 

@@ -7,13 +7,29 @@ const Person = React.forwardRef(
       ref={ref}
       animationTimePerMillisecond={animationTimePerMillisecond}
     >
-      <img alt={`${name}さんの画像`} src={imgPath} />
-      <span>
+      <UserImg alt={`${name}さんの画像`} src={imgPath} />
+      <UserInfo>
         <strong>{name}</strong>,{age}
-      </span>
+      </UserInfo>
     </PersonStyled>
   )
 );
+
+const UserInfo = styled.span`
+  text-align: left;
+  display: block;
+  width: 100%;
+  padding: 10px;
+
+  & > p {
+    margin-top: 1em;
+  }
+`;
+
+const UserImg = styled.img`
+  width: 100%;
+  height: 265px;
+`;
 
 const PersonStyled = styled.div`
   @keyframes likeBtn {
@@ -55,11 +71,13 @@ const PersonStyled = styled.div`
   opacity: 1;
 
   &.like {
-    animation: likeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    animation: likeBtn ${props => props.animationTimePerMillisecond || 0}ms
+      linear;
   }
 
   &.nope {
-    animation: nopeBtn ${props => props.animationTimePerMillisecond}ms linear;
+    animation: nopeBtn ${props => props.animationTimePerMillisecond || 0}ms
+      linear;
   }
 
   &:first-child {
@@ -82,12 +100,6 @@ const PersonStyled = styled.div`
     z-index: 2;
   }
 
-  & > img,
-  & > span {
-    display: block;
-    width: 100%;
-  }
-
   & > img {
     height: 100%;
   }
@@ -96,9 +108,8 @@ const PersonStyled = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 10px;
     background-color: white;
   }
 `;
 
-export default Person;
+export { Person, UserInfo, UserImg };
