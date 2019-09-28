@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7915f95b293c868616508a182f6a1765",
+    "revision": "b54f361a62e68452bc57e90a50bc9d6b",
     "url": "/like-tinder-view/index.html"
   },
   {
-    "revision": "270215540f70ce0d270e",
+    "revision": "0e6b30f2c27b18e3ea20",
     "url": "/like-tinder-view/static/css/main.ed227631.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/like-tinder-view/static/js/2.4e83795c.chunk.js"
   },
   {
-    "revision": "270215540f70ce0d270e",
-    "url": "/like-tinder-view/static/js/main.f44d04e4.chunk.js"
+    "revision": "0e6b30f2c27b18e3ea20",
+    "url": "/like-tinder-view/static/js/main.867147d0.chunk.js"
   },
   {
     "revision": "02d7173cd9ae06df86fe",
