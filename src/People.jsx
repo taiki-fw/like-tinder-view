@@ -13,19 +13,25 @@ export const peopleData = [
     id: 1,
     imgPath: model1,
     name: "Lara",
-    age: "22"
+    age: "22",
+    job: "freelance",
+    distance: "22cm"
   },
   {
     id: 2,
     imgPath: model2,
     name: "Sandra",
-    age: "18"
+    age: "18",
+    job: "students",
+    distance: "22m"
   },
   {
     id: 3,
     imgPath: model3,
     name: "Emma",
-    age: "24"
+    age: "24",
+    job: "nurse",
+    distance: "22km"
   }
 ];
 
@@ -57,19 +63,25 @@ export default class People extends React.Component {
           id: 1,
           imgPath: model1,
           name: "Lara",
-          age: "22"
+          age: "22",
+          job: "freelance",
+          distance: "22cm"
         },
         {
           id: 2,
           imgPath: model2,
           name: "Sandra",
-          age: "18"
+          age: "18",
+          job: "students",
+          distance: "22m"
         },
         {
           id: 3,
           imgPath: model3,
           name: "Emma",
-          age: "24"
+          age: "24",
+          job: "nurse",
+          distance: "22km"
         }
       ]
     };

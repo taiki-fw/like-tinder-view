@@ -20,10 +20,15 @@ const UserInfo = styled.span`
   display: block;
   width: 100%;
   padding: 10px;
+
+  & > p {
+    margin-top: 1em;
+  }
 `;
 
 const UserImg = styled.img`
   width: 100%;
+  height: 265px;
 `;
 
 const PersonStyled = styled.div`

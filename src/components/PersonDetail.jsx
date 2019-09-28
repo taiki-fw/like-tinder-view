@@ -13,8 +13,8 @@ const PersonDetail = props => {
       <UserImg alt={`${person.name}さんの画像`} src={person.imgPath} />
       <UserInfo>
         <strong>{person.name}</strong>,{person.age}
-        {/* <p>{person.job}</p>
-        <p>{person.distance}</p> */}
+        <p>{person.job}</p>
+        <p>{person.distance}</p>
       </UserInfo>
       <Link to="/">Home</Link>
     </PersonDetailStyle>
