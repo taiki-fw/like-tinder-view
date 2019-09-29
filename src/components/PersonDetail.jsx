@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { peopleData } from "../People";
+import { peopleData } from "../containers/People";
 import { UserImg, UserInfo } from "./Person";
 
 const PersonDetail = props => {

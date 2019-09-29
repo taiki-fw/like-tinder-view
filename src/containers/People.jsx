@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Person } from "./components/Person";
-import { NopeBtn, LikeBtn, JumpToUserInfo } from "./components/ActionBtn";
+import { Person } from "../components/Person";
+import { NopeBtn, LikeBtn, JumpToUserInfo } from "../components/ActionBtn";
 
 import model1 from "./img/model-1.jpg";
 import model2 from "./img/model-2.jpg";
