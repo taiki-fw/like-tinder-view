@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { Person } from "../components/Person";
 import { NopeBtn, LikeBtn, JumpToUserInfo } from "../components/ActionBtn";
 
-import model1 from "./img/model-1.jpg";
-import model2 from "./img/model-2.jpg";
-import model3 from "./img/model-3.jpg";
+import model1 from "../img/model-1.jpg";
+import model2 from "../img/model-2.jpg";
+import model3 from "../img/model-3.jpg";
 
 export const peopleData = [
   {
@@ -89,24 +89,28 @@ export default class People extends React.Component {
     this.handleAction = this.handleAction.bind(this);
   }
 
-  handleAction(e) {
-    const isLikeAction = e.currentTarget.name; // 付与するclassの名前の判別
-
+  createNewItem() {
     // randomなpeopleの選出
     const randomNum = Math.floor(Math.random() * peopleData.length);
     const randomPeople = peopleData[randomNum];
-
     // 表示されていたカードを削除し、ランダムにデータを追加した新しいpeopleデータ
     const newItem = this.state.people.slice(1).concat(randomPeople);
+    setTimeout(() => {
+      this.setState({
+        people: newItem
+      });
+    }, animationTime);
+  }
+
+  handleAction(e) {
+    const isLikeAction = e.currentTarget.name; // 付与するclassの名前の判別
 
     const obj = this.firstPeople.current; // 表示されているpeopleのnode
     obj.classList.add(isLikeAction);
     setTimeout(() => {
       obj.classList.remove(isLikeAction);
-      this.setState({
-        people: newItem
-      });
     }, animationTime);
+    this.createNewItem();
   }
 
   render() {
@@ -118,6 +122,7 @@ export default class People extends React.Component {
         imgPath={item.imgPath}
         name={item.name}
         age={item.age}
+        onSwipe={this.createNewItem.bind(this)}
       />
     ));
     const displayedPersonId = this.state.people[0].id;
