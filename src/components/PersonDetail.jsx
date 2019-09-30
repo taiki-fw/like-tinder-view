@@ -16,7 +16,7 @@ const PersonDetail = props => {
         <p>{person.job}</p>
         <p>{person.distance}</p>
       </UserInfo>
-      <Link to="/">Home</Link>
+      <Link to={`${process.env.PUBLIC_URL}/`}>Home</Link>
     </PersonDetailStyle>
   );
 };

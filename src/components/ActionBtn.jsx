@@ -32,7 +32,7 @@ const LikeBtn = props => (
 
 const JumpToUserInfo = ({ id }) => (
   <ShowUserInfoBtn>
-    <Link to={`/user/${id}`}>
+    <Link to={`${process.env.PUBLIC_URL}/user/${id}`}>
       <FontAwesomeIcon icon={faUserAlt} size="2x" color="deepskyblue" />
     </Link>
   </ShowUserInfoBtn>

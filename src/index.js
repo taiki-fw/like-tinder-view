@@ -13,10 +13,13 @@ import PersonDetail from "./components/PersonDetail";
 const App = () => (
   <div style={styles.app}>
     <header style={styles.header}></header>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Switch>
-        <Route exact path="/" component={People} />
-        <Route path="/user/:id" component={PersonDetail} />
+        <Route exact path={`${process.env.PUBLIC_URL}/`} component={People} />
+        <Route
+          path={`${process.env.PUBLIC_URL}/user/:id`}
+          component={PersonDetail}
+        />
       </Switch>
     </Router>
     {/* <UserActions /> */}
