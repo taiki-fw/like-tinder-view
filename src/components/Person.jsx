@@ -1,19 +1,81 @@
 import React from "react";
 import styled from "styled-components";
+import Hammer from "react-hammerjs";
 
-const Person = React.forwardRef(
-  ({ imgPath, name, age, animationTimePerMillisecond }, ref) => (
-    <PersonStyled
-      ref={ref}
-      animationTimePerMillisecond={animationTimePerMillisecond}
-    >
-      <UserImg alt={`${name}さんの画像`} src={imgPath} />
-      <UserInfo>
-        <strong>{name}</strong>,{age}
-      </UserInfo>
-    </PersonStyled>
-  )
-);
+// スワイプで開いたときの距離.
+const SWIPED_DISTANCE = window.innerWidth * 0.2;
+
+class Person extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      deltaX: 0
+    };
+  }
+
+  onPanStart(e) {
+    this.setState({
+      deltaX: 0
+    });
+  }
+
+  onPan(e) {
+    this.setState({
+      deltaX: e.deltaX
+    });
+  }
+
+  onPanEnd(e) {
+    if (Math.abs(this.state.deltaX) >= SWIPED_DISTANCE) {
+      window.alert("表示している要素を削除します");
+      this.props.onSwipe();
+      this.setState({ deltaX: 0 });
+    } else {
+    }
+  }
+
+  render() {
+    // スワイプ量に合わせて、要素の位置を変更する.
+    let style = {
+      transform: `translate(${this.state.deltaX}px, 0)`,
+      backgroundColor: "white"
+    };
+
+    const property = this.props;
+
+    return (
+      <Hammer
+        onPanStart={this.onPanStart.bind(this)}
+        onPan={this.onPan.bind(this)}
+        onPanEnd={this.onPanEnd.bind(this)}
+      >
+        <PersonStyled
+          style={style}
+          animationTimePerMillisecond={property.animationTimePerMillisecond}
+        >
+          <UserImg alt={`${property.name}さんの画像`} src={property.imgPath} />
+          <UserInfo>
+            <strong>{property.name}</strong>,{property.age}
+          </UserInfo>
+        </PersonStyled>
+      </Hammer>
+    );
+  }
+}
+
+// const Person = React.forwardRef(
+//   ({ imgPath, name, age, animationTimePerMillisecond }, ref) => (
+//     <PersonStyled
+//       ref={ref}
+//       animationTimePerMillisecond={animationTimePerMillisecond}
+//     >
+//       <UserImg alt={`${name}さんの画像`} src={imgPath} />
+//       <UserInfo>
+//         <strong>{name}</strong>,{age}
+//       </UserInfo>
+//     </PersonStyled>
+//   )
+// );
 
 const UserInfo = styled.span`
   text-align: left;

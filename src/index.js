@@ -7,7 +7,7 @@ import { UserActions } from "./components/ActionBtn";
 
 import * as serviceWorker from "./serviceWorker";
 
-import People from "./People";
+import People from "./containers/People";
 import PersonDetail from "./components/PersonDetail";
 
 const App = () => (
